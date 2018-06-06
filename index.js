@@ -12,7 +12,7 @@ var routes = require('./routes/routes')(io);
 const path = require('path');
 
 
-const dbb = mongoose.connect("mongodb://" + process.env.USER + ":" + process.env.PASS + "@ds137600.mlab.com:37600/tasksdb");
+const dbb = mongoose.connect(process.env.MONGOLAB_URI);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
