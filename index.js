@@ -44,7 +44,7 @@ app.use('/', routes);
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
-var server = http.listen(3000, function (io) {
+var server = http.listen(process.env.PORT || 5000, function (io) {
     console.log('Example app listening on port 3000!')
 })
 
