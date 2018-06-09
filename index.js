@@ -23,7 +23,7 @@ app.use(express.static(__dirname + '/dist'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "http://localhost:4200");
+    res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Methods", "GET, POST, PUT ,DELETE");
     res.header('Access-Control-Allow-Credentials', true);
     res.header(
@@ -41,7 +41,7 @@ io.on('connection', function (socket) {
     });
 });
 app.use('/', routes);
-app.get('*', (req, res) => {
+app.get('/home', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 var server = http.listen(process.env.PORT || 5000, function (io) {
